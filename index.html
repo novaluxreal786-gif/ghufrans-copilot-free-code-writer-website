@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghufran's Copilot - Free Code Writer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page-section active">
+        <div class="login-wrapper">
+            <div class="login-card">
+                <div class="logo-container">
+                    <i class="fas fa-code logo-icon"></i>
+                    <h1 class="main-title">Ghufran's Copilot</h1>
+                    <p class="subtitle">Free Code Writer Platform</p>
+                </div>
+
+                <form id="loginForm" class="login-form" onsubmit="handleLoginSubmit(event)">
+                    <div class="form-field">
+                        <label for="loginUsername" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" id="loginUsername" class="form-input" placeholder="Ghufran" required>
+                        <span class="error-text" id="loginUsernameError"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="loginPassword" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="Ghufran108@" required>
+                        <span class="error-text" id="loginPasswordError"></span>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-login-submit">
+                        <span>Login</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="login-divider">OR</div>
+
+                <button type="button" class="btn-secondary" onclick="goToRegister()">
+                    <i class="fas fa-user-plus"></i> Create New Account
+                </button>
+
+                <div class="login-footer">
+                    <div class="demo-box">
+                        <p><strong>📌 Demo Login Credentials:</strong></p>
+                        <p><code>ID: Ghufran</code></p>
+                        <p><code>Password: Ghufran108@</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Page -->
+    <div id="registerPage" class="page-section">
+        <div class="register-wrapper">
+            <div class="register-card">
+                <button type="button" class="btn-back" onclick="goToLogin()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+
+                <div class="logo-container">
+                    <i class="fas fa-user-plus logo-icon"></i>
+                    <h1 class="main-title">Join Us</h1>
+                    <p class="subtitle">Create Your Free Account</p>
+                </div>
+
+                <form id="registerForm" class="register-form" onsubmit="handleRegisterSubmit(event)">
+                    <div class="form-field">
+                        <label for="regUsername" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" id="regUsername" class="form-input" placeholder="Choose username" required minlength="3">
+                        <span class="error-text" id="regUsernameError"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regEmail" class="form-label">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="regEmail" class="form-input" placeholder="your.email@example.com" required>
+                        <span class="error-text" id="regEmailError"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regPassword" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" id="regPassword" class="form-input" placeholder="Create strong password" required minlength="6">
+                        <span class="error-text" id="regPasswordError"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regConfirmPassword" class="form-label">
+                            <i class="fas fa-lock"></i> Confirm Password
+                        </label>
+                        <input type="password" id="regConfirmPassword" class="form-input" placeholder="Confirm password" required>
+                        <span class="error-text" id="regConfirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-field checkbox-field">
+                        <input type="checkbox" id="termsCheckbox" required>
+                        <label for="termsCheckbox" class="checkbox-label">I agree to terms & conditions</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-register-submit">
+                        <span>Create Account</span>
+                        <i class="fas fa-check"></i>
+                    </button>
+                </form>
+
+                <div class="register-footer">
+                    <p><strong>Need Help?</strong></p>
+                    <a href="mailto:itxghani1084@gmail. com" class="email-link">
+                        <i class="fas fa-envelope"></i> itxghani1084@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page-section">
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="logo-text">
+                        <i class="fas fa-code"></i>
+                        <span>Copilot</span>
+                    </div>
+                    <button class="hamburger-btn" onclick="toggleMobileSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <nav class="sidebar-links">
+                    <a href="#" class="nav-link active" onclick="switchDashboardTab(event, 'chat-tab')">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </a>
+                    <a href="#" class="nav-link" onclick="switchDashboardTab(event, 'categories-tab')">
+                        <i class="fas fa-th"></i>
+                        <span>Categories</span>
+                    </a>
+                    <a href="#" class="nav-link" onclick="switchDashboardTab(event, 'history-tab')">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </a>
+                    <a href="#" class="nav-link" onclick="switchDashboardTab(event, 'settings-tab')">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <button class="btn-logout" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-dashboard">
+                <!-- Header -->
+                <header class="dashboard-top">
+                    <h2 id="dashboardTitle">Chat with Copilot</h2>
+                    <div class="user-info">
+                        <span id="userGreeting">Welcome</span>
+                        <img src="https://ui-avatars.com/api/? name=User&background=6366f1&color=fff" alt="User" class="user-avatar">
+                    </div>
+                </header>
+
+                <!-- Chat Tab -->
+                <section id="chat-tab" class="tab-section active">
+                    <div class="chat-container-main">
+                        <div class="messages-area" id="messagesArea">
+                            <div class="message bot-message">
+                                <div class="msg-content">
+                                    <p>👋 Hey!  I'm Ghufran's AI Copilot. Ask me anything about coding! </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-section">
+                            <div class="input-box">
+                                <textarea id="userMessageInput" class="message-textarea" placeholder="Ask me about HTML, CSS, JavaScript, Python..." rows="1"></textarea>
+                                <button class="btn-send-msg" onclick="sendUserMessage()" title="Send message">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+
+                            <div class="quick-buttons">
+                                <button class="quick-btn" onclick="insertQuickMessage('html')">HTML</button>
+                                <button class="quick-btn" onclick="insertQuickMessage('css')">CSS</button>
+                                <button class="quick-btn" onclick="insertQuickMessage('javascript')">JavaScript</button>
+                                <button class="quick-btn" onclick="insertQuickMessage('python')">Python</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories Tab -->
+                <section id="categories-tab" class="tab-section">
+                    <div class="categories-container">
+                        <div class="category-item" onclick="goToCategory('html')">
+                            <div class="category-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>HTML</h3>
+                            <p>Markup & Structure</p>
+                        </div>
+
+                        <div class="category-item" onclick="goToCategory('css')">
+                            <div class="category-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h3>CSS</h3>
+                            <p>Styling & Design</p>
+                        </div>
+
+                        <div class="category-item" onclick="goToCategory('javascript')">
+                            <div class="category-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h3>JavaScript</h3>
+                            <p>Logic & Interactivity</p>
+                        </div>
+
+                        <div class="category-item" onclick="goToCategory('python')">
+                            <div class="category-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                            <p>Backend & Scripting</p>
+                        </div>
+
+                        <div class="category-item" onclick="goToCategory('react')">
+                            <div class="category-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h3>React</h3>
+                            <p>Frontend Framework</p>
+                        </div>
+
+                        <div class="category-item" onclick="goToCategory('nodejs')">
+                            <div class="category-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <h3>Node.js</h3>
+                            <p>Server-side JS</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- History Tab -->
+                <section id="history-tab" class="tab-section">
+                    <div class="history-container">
+                        <div id="historyList" class="history-list">
+                            <p class="empty-message">No chat history yet.  Start chatting!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Tab -->
+                <section id="settings-tab" class="tab-section">
+                    <div class="settings-container">
+                        <div class="settings-block">
+                            <h3>Appearance</h3>
+                            <div class="setting-row">
+                                <label for="darkModeToggle">Dark Mode</label>
+                                <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                            </div>
+                        </div>
+
+                        <div class="settings-block">
+                            <h3>Account</h3>
+                            <div class="setting-row">
+                                <label>Username:</label>
+                                <p id="settingsUsername">Loading...</p>
+                            </div>
+                            <button class="btn-secondary" onclick="alert('Feature coming soon!')">
+                                Change Password
+                            </button>
+                        </div>
+
+                        <div class="settings-block">
+                            <h3>About</h3>
+                            <p><strong>Ghufran's Copilot v1.0</strong></p>
+                            <p>Free Code Writer Platform for Learning & Practice</p>
+                            <p><strong>Contact:</strong> itxghani1084@gmail.com</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer Credit -->
+    <footer class="page-footer">
+        <p>Coded & Designed By <span class="gradient-text">Ghufran</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

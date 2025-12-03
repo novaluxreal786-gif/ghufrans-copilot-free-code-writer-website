@@ -1,0 +1,23 @@
+{
+  "name": "ghufrains-copilot",
+  "version": "1.0.0",
+  "description": "Free Code Writer Platform - A practice and skill testing project",
+  "main": "index.html",
+  "scripts": {
+    "start": "Open index.html in your browser",
+    "dev": "Use a local server like Live Server extension in VS Code"
+  },
+  "keywords": [
+    "code",
+    "copilot",
+    "practice",
+    "learning",
+    "web-development"
+  ],
+  "author": "Ghufran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/novaluxreal786-gif/ghufrains-copilot. git"
+  }
+}
